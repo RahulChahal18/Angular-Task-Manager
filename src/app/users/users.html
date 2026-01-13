@@ -1,0 +1,24 @@
+<main>
+    <ul id="users" >
+        @for (user of allUsers; track $index) {
+            <li>
+                <app-user [user]="user" (outputUserId)="handleInputFromChild($event)" ></app-user>
+            </li>
+        }
+    </ul>
+
+    <div>
+        @for(item of allTasks; track $index) {
+            @if(receivedUserId==item.userId){
+                <li>
+                    <p>{{ item.title }}</p>
+                    <p>{{ item.summary }}</p>
+                    <p>{{ item.dueDate }}</p>
+                    <p>{{ item.userId }}</p>
+                </li>
+            }  
+        }
+    </div>
+</main>
+
+<!-- <h2>{{receivedUserId}}</h2> -->

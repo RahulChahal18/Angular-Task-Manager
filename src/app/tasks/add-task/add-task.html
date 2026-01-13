@@ -1,0 +1,76 @@
+<div class="backdrop" (click)="onCancel()"></div>
+
+<dialog open>
+  <label for="due-date">Due Date</label>
+  <h2>Add Task</h2>
+  <form #taskForm="ngForm" (ngSubmit)="submit2(taskForm)">
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" required minlength="3" name="title" [(ngModel)]="enteredTitle"  #titleCtrl="ngModel"/>
+
+      @if (titleCtrl.invalid && titleCtrl.touched) {
+        <span class="error">
+            @if (titleCtrl.errors?.['required']) {
+                Title is required
+            }
+            @if (titleCtrl.errors?.['minlength']) {
+                Title must be at least 3 characters
+            }
+        </span>
+      }
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" required minlength="10" name="summary" [(ngModel)]="enteredSummary"  #summaryCtrl="ngModel"></textarea>
+
+      @if (summaryCtrl.invalid && summaryCtrl.touched) {
+        <span class="error">
+            @if (summaryCtrl.errors?.['required']) {
+                Summary is required
+            }
+            @if (summaryCtrl.errors?.['minlength']) {
+                Summary must be at least 10 characters
+            }
+        </span>
+     }
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" required name="due-date" [(ngModel)]="enteredDate" #dateCtrl="ngModel"/>
+
+       @if (dateCtrl.invalid && dateCtrl.touched) {
+        <span class="error">Due date is required</span>
+       }
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="submit" >Create</button>  <!-- [disabled]="taskForm.invalid" -->
+    
+    </p>
+  </form>
+  <!-- @if (taskForm.invalid && taskForm.form.controls['title'].touched && taskForm.form.controls['summary'].touched && taskForm.form.controls['due-date'].touched) {
+    <p class="error">Please fix the errors above before submitting.</p>
+  } -->
+    
+  <!-- or -->
+   @if (taskForm.invalid && taskForm.submitted) {
+        <p class="error">
+            Please fix the errors above before submitting.
+        </p>
+    }
+
+
+</dialog>
+
+<!-- <div >
+    <form #addTaskForm = "ngForm" (ngSubmit)="submit(addTaskForm)" style="display: flex; flex-direction: column; gap: 20px;">
+        <input name="title" required ngModel type="text" placeholder="title">
+        <input name="dueDate" required ngModel type="date" placeholder="dueDate">
+        <input name="summary" ngModel required type="text" placeholder="summary">
+
+        <button>Submit</button>
+    </form>
+</div> -->

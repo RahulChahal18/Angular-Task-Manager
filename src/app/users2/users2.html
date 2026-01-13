@@ -1,0 +1,35 @@
+<main>
+    <ul id="users" >
+        @for (item of allUsers; track item.id) {
+            <li>
+                <app-user2 [user]="item" [isSelected]="item.id==receivedUserId" 
+                            (outputUserId)="handleInputFromChild($event)"></app-user2>
+            </li>
+        }
+    </ul>
+
+     @if (activeUser) {
+        <app-tasks [tasksUserId]="activeUser.id" [taskUserName]="activeUser.name"></app-tasks>
+    }
+
+
+        <!-- <div>
+            @for(item of allTasks; track $index) {
+                @if(receivedUserId==item.userId){
+                    <li>
+                        <p>{{ item.title }}</p>
+                        <p>{{ item.summary }}</p>
+                        <p>{{ item.dueDate }}</p>
+                        <p>{{ item.userId }}</p>
+                    </li>
+                }  
+            }
+        </div> -->
+    @else {
+        <p id="fallback">Select a user to see their tasks</p>
+    }
+    
+</main>
+
+<!-- <h2>{{receivedUserId ? receivedUserId : "empty/null"}}</h2> -->
+

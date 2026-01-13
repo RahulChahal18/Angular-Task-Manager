@@ -1,0 +1,10 @@
+<div>
+    <button [class.active]="currentUser.id == user?.id" (click)="onSelectUser(user?.id!)">
+        <!-- <img src="/users/{{selectedUser.avatar}}" alt="{{selectedUser.name}}"> -->
+        <!-- <img [src]="'/users/' + selectedUser.avatar" [alt]="selectedUser.name"> -->
+        <img [src]="imagePath" [alt]="user?.name">
+        <!-- <img src="{{imagePath}}" alt="{{selectedUser.name}}"> -->
+
+        <span>{{user?.name}}</span>
+    </button> 
+</div>

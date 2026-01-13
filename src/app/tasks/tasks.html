@@ -1,0 +1,28 @@
+@if(isAddTaskVisible){
+  <!-- method 1 -->
+    <!-- <app-add-task (createdTask)="handleCreatedTask($event)" (closeAddTask)="handleCancelAddTask()" [addTaskUserId]="tasksUserId" ></app-add-task> -->
+
+    <!-- method 2 -->
+    <app-add-task (closeAddTask)="handleCloseAddTask()" [addTaskUserId]="tasksUserId" ></app-add-task>
+}
+
+<section>
+  <header>
+    <h2>{{taskUserName}}'s tasks</h2>
+    <menu>
+      <button (click)="isAddTaskVisible=true">Add Task</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (item of activeUserTasks; track item.id ?? $index) {
+      <!-- method 1 -->
+      <!-- <app-task [inputTask]="item" (outputTaskCompletedId)="handleCompletedTask($event)"></app-task> -->
+       <!-- method 2 with service in the app-task -->
+      <app-task [inputTask]="item"></app-task>
+    }
+    @empty {
+      <h3>No Tasks for the selected user</h3>
+    }
+  </ul>
+</section>
