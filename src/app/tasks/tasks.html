@@ -6,7 +6,7 @@
     <app-add-task (closeAddTask)="handleCloseAddTask()" [addTaskUserId]="tasksUserId" ></app-add-task>
 }
 
-<section>
+<section id="tasks">
   <header>
     <h2>{{taskUserName}}'s tasks</h2>
     <menu>
@@ -22,7 +22,9 @@
       <app-task [inputTask]="item"></app-task>
     }
     @empty {
-      <h3>No Tasks for the selected user</h3>
+      <app-card>
+        <div>No Tasks for the selected user</div>
+      </app-card>
     }
   </ul>
 </section>

@@ -2,7 +2,7 @@
     <article>
         <h2>{{inputTask.title}}</h2>
         <time datetime="">{{inputTask.dueDate | date:'fullDate'}}</time>
-    <p>{{inputTask.summary}}</p>
+        <p>{{inputTask.summary}}</p>
         <p class="actions">
             <button (click)="deleteTask( )">Complete</button>
         </p>

@@ -5,6 +5,7 @@ import { AddTask } from './add-task/add-task';
 import { TaskStructure } from './task/task.model';
 
 import {TasksService} from './tasks.service'
+import { Card } from "../shared/card/card";
 // import { DUMMY_USERS } from '../dummy-users';
 
 // interface User {
@@ -15,7 +16,7 @@ import {TasksService} from './tasks.service'
 
 @Component({
   selector: 'app-tasks',
-  imports: [Task, AddTask],
+  imports: [Task, AddTask, Card],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })
